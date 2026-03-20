@@ -39,7 +39,7 @@ pub type MTDeviceRef = *const c_void;
 
 #[link(name = "MultitouchSupport", kind = "framework")]
 #[link(name = "CoreFoundation", kind = "framework")]
-extern "C" {
+unsafe extern "C" {
     //MTDeviceRef MTDeviceCreateDefault();
     pub fn MTRegisterContactFrameCallbackWithRefcon(
         device: MTDeviceRef,
