@@ -61,8 +61,10 @@ extern "C" fn callback_handler(
     user_data: *mut c_void,
 ) -> c_int {
     #[allow(clippy::type_complexity)]
-    let closure: &mut &mut dyn FnMut(MTDeviceRef, &[Finger], f64, i32) =
-        unsafe { &mut *(user_data as *mut &mut dyn for<'a> std::ops::FnMut(*const libc::c_void, &'a [Finger], f64, i32)) };
+    let closure: &mut &mut dyn FnMut(MTDeviceRef, &[Finger], f64, i32) = unsafe {
+        &mut *(user_data
+            as *mut &mut dyn for<'a> std::ops::FnMut(*const libc::c_void, &'a [Finger], f64, i32))
+    };
     let fingers = unsafe { std::slice::from_raw_parts(data, length as usize) };
     closure(device, fingers, timestamp, frame);
 
