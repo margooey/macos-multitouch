@@ -36,8 +36,9 @@ pub struct Finger {
 
 pub type MTDeviceRef = *const c_void;
 
-#[link(name = "MultitouchSupport")]
-#[link(name = "CoreFoundation")]
+#[allow(clippy::duplicated_attributes)]
+#[link(name = "MultitouchSupport", kind = "framework")]
+#[link(name = "CoreFoundation", kind = "framework")]
 unsafe extern "C" {
     //MTDeviceRef MTDeviceCreateDefault();
     pub fn MTRegisterContactFrameCallbackWithRefcon(
