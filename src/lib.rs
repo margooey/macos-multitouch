@@ -22,7 +22,7 @@ pub struct Finger {
     pub identifier: i32,
     pub state: i32,
     pub finger_number: i32,
-    pub unknown0: i32,
+    pub palm_rejection: i32, // 0 if palm, ±1/ if finger (generally)
     pub normalized: MtReadout,
     pub size: f32,
     pub unknown1: i32,
