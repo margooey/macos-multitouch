@@ -2,7 +2,6 @@ extern crate core_foundation_sys;
 extern crate libc;
 
 use libc::*;
-use std::mem;
 
 #[repr(C)]
 pub struct MtPoint {
@@ -37,8 +36,8 @@ pub struct Finger {
 
 pub type MTDeviceRef = *const c_void;
 
-#[link(name = "MultitouchSupport", kind = "framework")]
-#[link(name = "CoreFoundation", kind = "framework")]
+#[link(name = "MultitouchSupport")]
+#[link(name = "CoreFoundation")]
 unsafe extern "C" {
     //MTDeviceRef MTDeviceCreateDefault();
     pub fn MTRegisterContactFrameCallbackWithRefcon(
@@ -60,6 +59,7 @@ extern "C" fn callback_handler(
     frame: c_int,
     user_data: *mut c_void,
 ) -> c_int {
+    #[allow(clippy::type_complexity)]
     let closure: &mut &mut dyn FnMut(MTDeviceRef, &[Finger], f64, i32) =
         unsafe { &mut *(user_data as *mut &mut dyn for<'a> std::ops::FnMut(*const libc::c_void, &'a [Finger], f64, i32)) };
     let fingers = unsafe { std::slice::from_raw_parts(data, length as usize) };
@@ -86,6 +86,7 @@ impl MultitouchDevice {
         F: FnMut(MTDeviceRef, &[Finger], f64, i32),
     {
         if !self.is_started {
+            #[allow(clippy::type_complexity)]
             let cb: Box<Box<dyn FnMut(MTDeviceRef, &[Finger], f64, i32)>> =
                 Box::new(Box::new(callback));
             unsafe {
