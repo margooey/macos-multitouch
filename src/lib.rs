@@ -31,7 +31,7 @@ pub struct Finger {
     pub minor_axis: f32, // /
     pub mm: MtReadout,
     pub unknown2: [i32; 2],
-    pub unknown3: f32,
+    pub capacitance: f32, // how strong the electrical signal is for a touch, lower = weaker
 }
 
 pub type MTDeviceRef = *const c_void;
