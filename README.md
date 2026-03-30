@@ -37,7 +37,7 @@ fn main()
                     f.major_axis, f.minor_axis,
                     f.normalized.pos.x, f.normalized.pos.y,
                     f.normalized.vel.x, f.normalized.vel.y,
-                    f.identifier, f.state, f.finger_number, f.unknown0,
+                    f.identifier, f.state, f.finger_number, f.palm_rejection,
                     f.size, f.unknown1, f.unknown2[0], f.unknown2[1], f.unknown3);
             }
         }).unwrap(); // can fail if a callback is registered to the device already

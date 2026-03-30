@@ -33,7 +33,7 @@ fn main() {
                             f.identifier,
                             f.state,
                             f.finger_number,
-                            f.unknown0,
+                            f.palm_rejection,
                             f.size,
                             f.unknown1,
                             f.unknown2[0],
