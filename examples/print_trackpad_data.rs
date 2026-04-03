@@ -35,7 +35,7 @@ fn main() {
                             f.finger_number,
                             f.palm_rejection,
                             f.size,
-                            f.unknown1,
+                            f.pressure,
                             f.unknown2[0],
                             f.unknown2[1],
                             f.capacitance
