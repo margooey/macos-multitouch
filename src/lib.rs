@@ -25,7 +25,7 @@ pub struct Finger {
     pub palm_rejection: i32, // 0 if palm, ±1 if finger (generally)
     pub normalized: MtReadout,
     pub size: f32,
-    pub pressure: i32, // see https://github.com/KrishKrosh/TrackWeight
+    pub pressure: i32,   // see https://github.com/KrishKrosh/TrackWeight
     pub angle: f32,      // \
     pub major_axis: f32, //  |- ellipsoid
     pub minor_axis: f32, // /
